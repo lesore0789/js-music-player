@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
+
+/* CSS reset from https://andy-bell.co.uk/a-more-modern-css-reset/ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(90deg, hsla(152, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+.music-container {
+  background-color: hsla(170, 100%, 95%, 1);
+  border-radius: 20%;
+  box-shadow: 0 20px 20px 0 rgb(179, 202, 198);
+  display: flex;
+  padding: 1em;
+  margin: 1em;
+  width: 60%;
+  gap: 10%
+}
+
+.img-container > img{
+  max-width: 20em;
+  border-radius: 50%;
+  box-shadow: 5px 5px 12px 2px #7a807c;
+}
+
+.music_info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn {
+  background-color: hsla(170, 100%, 95%, 1);
+  border: 0;
+  color: rgb(171, 192, 189);
+  font-size: 1em;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 20px;;
+}
+
+.action-btn-big {
+  color: rgb(128, 146, 143);
+  font-size: 2em;
+}
+
+.action-btn:focus {
+  outline: 0;
+}
+
+.progress-container {
+  background: rgb(233, 238, 237);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 4px;
+  width: 100%;
+}
+
+.progress {
+  background-color: rgb(34, 176, 192);
+  border-radius: 5px;
+  height: 100%;
+  width:0%;
+  transition: width 0.1s linear;
+}
