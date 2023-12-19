@@ -52,16 +52,91 @@ const songs = [
 
 
 // Keep track of songs
-let songIndex = 1;
+let songIndex = 0;
 
 // Initally load song info into DOM
-
 loadSong(songIndex)
 
-
+// Load song details
 function loadSong(songIndex) {
   title.innerText = songs[songIndex].title;
   author.innerText = songs[songIndex].author
   audio.src = songs[songIndex].music;
   cover.src = songs[songIndex].img;
 }
+
+function playSong() {
+  musicContainer.classList.add('play')
+  playBtn.querySelector('i.fas').classList.remove('fa-play');
+  playBtn.querySelector('i.fas').classList.add('fa-pause');
+  audio.play()
+}
+
+function pauseSong() {
+  musicContainer.classList.remove('play')
+  playBtn.querySelector('i.fas').classList.add('fa-play');
+  playBtn.querySelector('i.fas').classList.remove('fa-pause');
+  audio.pause()
+}
+
+function prevSong() {
+  songIndex--
+
+  if(songIndex < 0) {
+    songIndex = songs.length - 1
+  }
+  loadSong(songIndex);
+  playSong();
+}
+
+function nextSong() {
+  songIndex++
+
+  if(songIndex > songs.length - 1) {
+    songIndex = 0
+  }
+  loadSong(songIndex);
+  playSong();
+}
+
+function updateProgress(e) {
+  // console.log(e.srcElement.currentTime)
+  // console.log(e.srcElement.duration)
+  const {duration, currentTime} = e.srcElement
+  const progressPercent = (currentTime / duration) * 100
+  progress.style.width = `${progressPercent}%`
+}
+
+function setProgress(e) {
+  const width = this.clientWidth;
+  // console.log(width)
+  const clickX = e.offsetX
+  // console.log(clickX)
+  const duration = audio.duration
+
+  audio.currentTime = (clickX / width) * duration
+}
+
+// Event Listeners
+playBtn.addEventListener('click', () => {
+  const isPlaying = musicContainer.classList.contains('play');
+
+  if(isPlaying) {
+    pauseSong()
+  } else {
+    playSong()
+  }
+})
+
+// Change song
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+
+// Progress bar progressing
+audio.addEventListener('timeupdate', updateProgress)
+
+// Clicking through progress bar
+progressContainer.addEventListener('click', setProgress)
+
+// After a song ends
+audio.addEventListener('ended', nextSong)
